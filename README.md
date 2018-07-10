@@ -66,3 +66,7 @@ To run the supervisor app follow these steps below:
 cd bamazon
 npm install
 node bamazonSupervisor.js
+
+https://github.com/ravenusric/Bamazon-MySql/blob/master/bamazoncustomer.png
+
+https://github.com/ravenusric/Bamazon-MySql/blob/master/bamazonsupervisor.png
