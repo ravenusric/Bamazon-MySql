@@ -17,9 +17,9 @@ var connection = mysql.createConnection({
 	database: 'Bamazon_db'
 });
 
-// promptManagerAction will present menu options to the manager and trigger appropriate logic
-function promptManagerAction() {
-	// console.log('___ENTER promptManagerAction___');
+// promptManager will present menu options to the manager and trigger appropriate logic
+function promptManager() {
+	// console.log('___ENTER promptManager___');
 
 	// Prompt the manager to select an option
 	inquirer.prompt([
@@ -49,9 +49,9 @@ function promptManagerAction() {
 
 		// Trigger the appropriate action based on the user input
 		if (input.option ==='sale') {
-			displayInventory();
+			showInventory();
 		} else if (input.option === 'lowInventory') {
-			displayLowInventory();
+			showLowInventory();
 		} else if (input.option === 'addInventory') {
 			addInventory();
 		} else if (input.option === 'newProduct') {
@@ -64,9 +64,9 @@ function promptManagerAction() {
 	})
 }
 
-// displayInventory will retrieve the current inventory from the database and output it to the console
-function displayInventory() {
-	// console.log('___ENTER displayInventory___');
+// showInventory will retrieve the current inventory from the database and output it to the console
+function showInventory() {
+	// console.log('___ENTER showInventory___');
 
 	// Construct the db query string
 	queryStr = 'SELECT * FROM products';
@@ -97,9 +97,9 @@ function displayInventory() {
 	})
 }
 
-// displayLowInventory will display a list of products with the available quantity below 100
-function displayLowInventory() {
-	// console.log('___ENTER displayLowInventory');
+// showLowInventory will display a list of products with the available quantity below 100
+function showLowInventory() {
+	// console.log('___ENTER showLowInventory');
 
 	// Construct the db query string
 	queryStr = 'SELECT * FROM products WHERE stock_quantity < 100';
@@ -130,8 +130,8 @@ function displayLowInventory() {
 	})
 }
 
-// validateInteger makes sure that the user is supplying only positive integers for their inputs
-function validateInteger(value) {
+// validateNumber makes sure that the user is supplying only positive integers for their inputs
+function validateNumber(value) {
 	var integer = Number.isInteger(parseFloat(value));
 	var sign = Math.sign(value);
 
@@ -142,8 +142,8 @@ function validateInteger(value) {
 	}
 }
 
-// validateNumeric makes sure that the user is supplying only positive numbers for their inputs
-function validateNumeric(value) {
+// validateNumber makes sure that the user is supplying only positive numbers for their inputs
+function validateNumber(value) {
 	// Value must be a positive number
 	var number = (typeof parseFloat(value)) === 'number';
 	var positive = parseFloat(value) > 0;
@@ -165,14 +165,14 @@ function addInventory() {
 			type: 'input',
 			name: 'item_id',
 			message: 'Please enter the Item ID for stock_count update.',
-			validate: validateInteger,
+			validate: validateNumber,
 			filter: Number
 		},
 		{
 			type: 'input',
 			name: 'quantity',
 			message: 'How many would you like to add?',
-			validate: validateInteger,
+			validate: validateNumber,
 			filter: Number
 		}
 	]).then(function(input) {
@@ -241,13 +241,13 @@ function createNewProduct() {
 			type: 'input',
 			name: 'price',
 			message: 'What is the price per unit?',
-			validate: validateNumeric
+			validate: validateNumber
 		},
 		{
 			type: 'input',
 			name: 'stock_quantity',
 			message: 'How many items are in stock?',
-			validate: validateInteger
+			validate: validateNumber
 		}
 	]).then(function(input) {
 		// console.log('input: ' + JSON.stringify(input));
@@ -278,7 +278,7 @@ function runBamazon() {
 	// console.log('___ENTER runBamazon___');
 
 	// Prompt manager for input
-	promptManagerAction();
+	promptManager();
 }
 
 // Run the application logic
