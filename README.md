@@ -70,3 +70,10 @@ node bamazonSupervisor.js
 https://github.com/ravenusric/Bamazon-MySql/blob/master/bamazoncustomer.png
 
 https://github.com/ravenusric/Bamazon-MySql/blob/master/bamazonsupervisor.png
+
+![Image of Bamazon Customer](https://github.com/ravenusric/Bamazon-MySql/blob/master/bamazoncustomer.png
+)
+
+![Image of Bamazon Customer](https://github.com/ravenusric/Bamazon-MySql/blob/master/bamazonsupervisor.png
+)
+
